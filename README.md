@@ -1,2 +1,2 @@
-# A a Go Web App 
+# A sample Go Web App 
 
