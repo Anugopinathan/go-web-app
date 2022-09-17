@@ -18,7 +18,7 @@ jobs:
 
     - name: Build the go-web-app image
       run: |
-        docker build . --tag ghcr.io/Anugopinathan/go-web-app:latest
-        docker run ghcr.io/Anugopinathan/go-web-app:latest
-        docker push ghcr.io/Anugopinathan/go-web-app:latest
+        docker build . --tag ghcr.io/anugopinathan/go-web-app:latest
+        docker run ghcr.io/anugopinathan/go-web-app:latest
+        docker push ghcr.io/anugopinathan/go-web-app:latest
 

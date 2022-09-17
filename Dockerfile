@@ -10,6 +10,9 @@ RUN go test -v
 RUN CGO_ENABLED=0 go build -o /go/bin/app
 
 FROM debian:bullseye-slim
+
+LABEL org.opencontainers.image.source="https://github.com/anugopinathan/go-web-app"
+
 COPY --from=build /go/src/app /
 COPY --from=build /go/bin/app /
 CMD ["/app"]
