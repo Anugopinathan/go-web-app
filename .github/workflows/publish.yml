@@ -3,15 +3,22 @@ name: publish
 on: [push]
 
 jobs:
-  publish-go-webapp-image:
+  publish-go-web-app-image:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build the webapp Docker image
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build the go-web-app image
       run: |
-        echo $CR_PAT | docker login ghcr.io -u Anugopinathan --password-stdin
-      env:
-        CR_PAT: ${{ secrets.CR_PAT }}
+        docker build . --tag ghcr.io/Anugopinathan/go-web-app:latest
+        docker run ghcr.io/Anugopinathan/go-web-app:latest
+        docker push ghcr.io/Anugopinathan/go-web-app:latest
 
